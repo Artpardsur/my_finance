@@ -1,0 +1,17 @@
+# Файлы базы данных (сведения о финансах)
+*.db
+*.sqlite
+*.sqlite3
+
+# Виртуальное окружение Python
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Файлы настроек VS Code
+.vscode/
+
+# Файлы с секретами
+.env
+config.ini
