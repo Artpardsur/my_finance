@@ -53,3 +53,40 @@ class FinanceManager:
         for case in self.cases:
             print(f"  {case}")
         print("=" * 20)
+    
+    def delete_case(self, name: str) -> None:
+     """
+      Удалить кейс по имени
+    
+     Аргументы:
+           name: название кейса для удаления
+    
+      Исключения:
+           ValueError: если кейс с таким именем не найден
+     """
+     # Ищем кейс
+     for i, case in enumerate(self.cases):
+           if case.name == name:
+                # Удаляем по индексу
+                del self.cases[i]
+                return  # Выходим из метода (успешно)
+    
+     # Если дошли сюда - кейс не найден
+     raise ValueError(f"Кейс '{name}' не найден")
+ 
+    def edit_case(self, old_name, new_name) -> str:
+        for case in self.cases:
+           if case.name == old_name:
+                # Заменяем старое имя на новое
+                case.name = new_name
+                return case.name
+    
+        # Если дошли сюда - кейс не найден
+        raise ValueError(f"Кейс '{old_name}' не найден")
+    
+    def get_total_balance(self) -> float:
+        total = 0
+        for case in self.cases:
+           total += case.balance
+        return total
+    
