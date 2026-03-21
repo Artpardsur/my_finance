@@ -17,6 +17,7 @@ class Case:
         self.name = name
         self.currency = currency.upper()  # Приводим к верхнему регистру
         self.balance = balance
+        self.hidden = hidden
         
     def deposit(self, amount: float) -> float:
         """

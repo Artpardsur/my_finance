@@ -3,6 +3,7 @@
 """
 
 from src.models import Case
+from src.database import Database
 
 class FinanceManager:
     """Управление финансами"""
@@ -90,3 +91,24 @@ class FinanceManager:
            total += case.balance
         return total
     
+    def hide_case(self, name: str) -> None:
+        case = self.get_case(name)
+        case.hidden = True
+
+    def unhide_case(self, name: str) -> None:
+        case = self.get_case(name)
+        case.hidden = False
+
+    def get_visible_cases(self) -> list:
+        return [case for case in self.cases if not case.hidden]
+    
+    def __init__(self, db: Database = None):
+        self.cases = []
+        self.db = db
+        if self.db:
+            self.cases = self.db.load_all_cases()
+
+    def save_all(self):
+        if self.db:
+            # Сохранить все кейсы в БД
+            pass
